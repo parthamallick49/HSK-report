@@ -16,211 +16,171 @@
             --shadow-color: rgba(0, 0, 0, 0.05);
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            margin: 0;
-            background-color: var(--light-gray);
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.4;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
-            color: var(--text-color);
-            line-height: 1.6;
+            align-items: center;
         }
 
-        .container {
+        .mobile-wrapper {
             width: 100%;
-            max-width: 800px;
-            background-color: #fff;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            margin: 0 auto;
-            padding-bottom: 20px;
-        }
-        .main-border {
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        /* --- Header Bar (Dark Status Bar) --- */
-        .header-bar {
-            background-color: #333;
-            color: #fff;
+            height: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            font-size: 0.9em;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-direction: column;
+            background: #fff;
+            position: relative;
         }
 
-        .header-bar .left, .header-bar .right {
+        .content-container {
+            flex: 1;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            padding: 6px;
+            overflow: hidden;
         }
 
-        .header-bar .left span {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        
-        /* --- Navigation Bar (White Bar) --- */
-        .nav-bar {
-            background-color: #fff;
+        .scalable-content {
+            transform-origin: top center;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid var(--medium-gray);
-        }
-
-        .nav-bar .icon {
-            font-size: 1.5em;
-            color: var(--dark-gray);
-            cursor: pointer;
-            width: 30px; /* Fixed width for alignment */
-            text-align: left;
-        }
-        
-        .nav-bar .center {
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .nav-bar .title {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: var(--dark-gray);
-        }
-        
-        .nav-bar .actions {
-            display: flex;
-            gap: 15px;
-            width: 30px; /* Fixed width for alignment */
-            justify-content: flex-end;
-        }
-
-        /* --- Main Content Area --- */
-        .content {
-            padding: 20px 15px;
+            flex-direction: column;
+            gap: 8px;
         }
 
         h1 {
             text-align: center;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: var(--dark-gray);
+            font-size: 12px;
+            color: black;
+            font-weight: 700;
         }
 
         h2 {
             text-align: center;
-            font-size: 0.9em;
-            color: #777;
-            margin-top: 0;
-            margin-bottom: 30px;
+            font-size: 8px;
+            color: black;
+            margin-bottom: 7px;
             font-weight: normal;
+            padding: 0px;
         }
 
         .section {
-            margin-bottom: 25px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 3px;
             overflow: hidden;
+            margin-bottom: 5px;
         }
+        
+        .main-card {
+            border: 0.5px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            padding: 8px;
 
+        }
         .section-header {
-            /* background-color: var(--light-gray); */
-            padding: 12px 15px;
+            padding: 6px 15px;
             font-weight: 500;
-            font-size: 0.95em;
             border-bottom: 1px solid var(--border-color);
             color: var(--dark-gray);
+            background-color: white;
+            font-size: smaller;
         }
+        
 
-        /* --- GRID LAYOUT FOR PERSONAL INFO (UI FIX) --- */
-        /* This applies to the first section where the photo is */
         .details-grid {
             display: grid;
-            /* 3 Columns: Label (1), Value (2), Photo Area (1) - Adjusted proportions for the UI */
-            grid-template-columns: 1fr 2fr 1.2fr;
+            grid-template-columns: 2.2fr 2fr 0.3fr;
             gap: 1px;
             background-color: var(--border-color);
         }
 
         .details-grid-item {
-            padding: 5px 5px;
+            padding: 4px 6px;
             background-color: #fff;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
+            font-size: 8px;
         }
 
         .details-grid-item.label {
-            text-align: right; /* Label text aligned right */
+            text-align: right;
             font-weight: 400;
-            color: #666;
+            color: black;
             background-color: var(--light-gray);
-            grid-column: 1 / 2; /* Label in the first column */
+            grid-template-columns: 1.6fr 2.5fr 0fr;
+            display: block;
+            /* padding-right: 10px; */
+            display: block; 
+            padding-left: 5px; 
         }
 
         .details-grid-item.value {
-            text-align: left; /* Value text aligned left */
+            text-align: left;
             font-weight: 500;
             color: var(--dark-gray);
-            grid-column: 2 / 3; /* Value in the second column */
-            
         }
         
-        /* The Photo Cell spans 4 rows and sits in the third column */
         .details-grid-item.photo-cell {
-            grid-column: 3 / 4; /* Photo in the third column */
-            grid-row: 1 / 5; /* Spans rows 1 through 4 */
+            grid-column: 3 / 4;
+            grid-row: 1 / 5;
             justify-content: center;
-            align-items: flex-start; /* Align photo slightly to the top like in the image */
+            align-items: flex-start;
             background-color: #fff;
-            padding: 10px;
+            padding: 4px;
+            display: flex;
         }
 
         .details-grid-item.photo-cell img {
-            max-width: 100%; 
-            max-height: 120px;
-            width: 80px; /* Fixed width for better control */
-            height: auto;
-            border-radius: 4px;
-            object-fit: cover;
-            border: 1px solid var(--border-color);
+            width: 50px;
+            /* height: auto; */
+            /* border-radius: 2px; */
+            /* object-fit: cover; */
+            /* border: 1px solid var(--border-color); */
         }
         
-        /* --- Second Section Grid (No Photo, simpler) --- */
-        /* Ensure the second section uses only 2 columns, spanning 1fr and 2fr */
         .section:nth-of-type(2) .details-grid {
-            grid-template-columns: 1fr 2fr; 
-        }
-        .section:nth-of-type(2) .details-grid-item {
-            grid-column: auto; 
+            grid-template-columns: 1.55fr 2fr;
+            
         }
         .section:nth-of-type(2) .details-grid-item.label {
-             grid-column: 1 / 2; 
+            display: block;
+            text-align: right;
+            /* padding-right: 10px; */
         }
         .section:nth-of-type(2) .details-grid-item.value {
-             grid-column: 2 / 3; 
+            display: block;
+            text-align: left;
+            /* padding-left: 5px; */
         }
 
+        .section:nth-of-type(2) .section-header {
+            padding-bottom: 10px;
+            font-size: 9px;
+        }
 
-        /* --- Table Styles --- */
         .score-table {
             width: 100%;
             border-collapse: collapse;
             background-color: #fff;
-
+            /* font-size: 6px; */
+            
         }
-
         .score-table th, .score-table td {
             border: 1px solid var(--border-color);
-            padding: 4px 4px;
+            /* padding: 4px 2px; */
             text-align: center;
-            font-size: 0.9em;
         }
 
         .score-table th {
@@ -228,104 +188,128 @@
             font-weight: 500;
             color: var(--dark-gray);
             white-space: nowrap;
+            color: black;
+            padding-top: 5px;
+            
         }
 
-        .score-table .status.pass,
-        .score-table .status.fail {
-            color: var(--dark-gray); /* Match the image: standard dark gray text */
-            font-weight: 500;
+        .score-table:nth-of-type(2) .th {
+            font-size: 7px;
         }
 
-        /* --- Footer --- */
         .footer {
             text-align: center;
-            font-size: 0.8em;
-            color: #888;
-            margin-top: 30px;
-            padding: 0 15px;
+            font-size: 7px;
+            color: black;
+            margin-top: 8px;
+            padding: 0 8px;
+            margin-bottom: 10px;
         }
 
-        /* --- Mobile Responsive Adjustments --- */
+        /* Mobile optimization - Further reduced sizes */
         @media (max-width: 600px) {
-            .nav-bar .title {
-                font-size: 1em;
-            }
-            .content {
-                padding: 15px 10px;
-            }
-            .section-header, .details-grid-item, .score-table th, .score-table td {
-                font-size: 0.85em;
-                padding: 10px;
+            .scalable-content {
+                gap: 8px; 
             }
             
-            /* Restructure Photo Grid for Mobile (Stacked) */
-            .details-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 1px;
+            h1 {
+                font-size: 13px;
             }
-
+            
+            h2 {
+                font-size: 9px; 
+                margin-bottom: 8px; 
+            }
+            
+            .section-header {
+                font-size: 10px;
+                padding: 5px 7px; 
+            }
+            
             .details-grid-item {
-                /* Reset grid properties for stacked view */
-                grid-column: auto !important;
-                grid-row: auto !important;
+                font-size: 9px; 
+                padding: 3px 5px; 
             }
             
-            .details-grid-item.photo-cell {
-                order: -1; /* Move photo to the top of the stacked list */
-                justify-content: center;
-                align-items: center;
-                padding: 4px 4px;
-                border: none;
-                border-bottom: 1px solid var(--border-color);
+            .details-grid-item.photo-cell img {
+                width: 45px; 
             }
-            .details-grid-item.label {
-                background-color: var(--light-gray);
+            
+            .score-table {
+                font-size: 9px; 
+            }
+            
+            .score-table th, .score-table td {
+                padding: 3px 1px; 
             }
         }
-        
-        /* Icon Font Fallback */
-        .icon {
-            font-family: 'Arial', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            display: inline-block;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+
+        /* For very small screens - Further reduced sizes */
+        @media (max-width: 400px) {
+            .scalable-content {
+                gap: 4px; 
+            }
+            
+            h1 {
+                font-size: 12px; 
+            }
+            
+            h2 {
+                font-size: 8px; 
+                margin-bottom: 6px; 
+            }
+            
+            .section-header {
+                font-size: 9px; 
+                padding: 4px 6px; 
+            }
+            
+            .details-grid-item {
+                font-size: 8px; 
+                padding: 2px 4px; 
+            }
+            
+            .details-grid-item.photo-cell img {
+                width: 40px; 
+            }
+            
+            .score-table {
+                font-size: 8px; 
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>中文考试成绩在线验证结果查询</h1>
-            <h2>汉考国际教育科技（北京）有限公司（CTI）</h2>
-            <div class="main-border">
-                <div class="section">
-                    <div class="section-header">Information of test taker</div>
-                    <div class="details-grid">
-                        <div class="details-grid-item photo-cell">
-                            <img src="img_shanto.jpg" alt="Test Taker Photo"> 
+    <div class="mobile-wrapper">
+        <div class="content-container">
+            <div class="scalable-content">
+                <h1>中文考试成绩在线验证结果查询</h1>
+                <h2>汉考国际教育科技（北京）有限公司（CTI）</h2>
+                
+                <div class="main-card">
+                    <div class="section">
+                        <div class="section-header">Information of test taker</div>
+                        <div class="details-grid">
+                            <div class="details-grid-item photo-cell">
+                                <img src="img_shanto.jpg" alt="Test Taker Photo"> 
+                            </div>
+
+                            <div class="details-grid-item label">Name on Certificate</div>
+                            <div class="details-grid-item value">Abir Hossain Shanto</div>
+
+                            <div class="details-grid-item label">Chinese Name</div>
+                            <div class="details-grid-item value"> </div> 
+                            
+                            <div class="details-grid-item label">Nationality</div>
+                            <div class="details-grid-item value">孟加拉国</div> 
+                            
+                            <div class="details-grid-item label">Gender</div>
+                            <div class="details-grid-item value">男性</div> 
                         </div>
-
-                        <div class="details-grid-item label">Name on Certificate</div>
-                        <div class="details-grid-item value">Abir Hossain Shanto</div>
-
-                        <div class="details-grid-item label">Chinese Name</div>
-                        <div class="details-grid-item value"> </div> 
-                        
-                        <div class="details-grid-item label">Nationality</div>
-                        <div class="details-grid-item value">孟加拉国</div> 
-                        
-                        <div class="details-grid-item label">Gender</div>
-                        <div class="details-grid-item value">男性</div> 
                     </div>
-                </div>
 
-                <div class="section">
-                    <div class="section-header">考试信息</div>
-
+                    <div class="section">
+                        <div class="section-header">考试信息</div>
                         <div class="details-grid">
                             <div class="details-grid-item label">考点名称</div>
                             <div class="details-grid-item value">福建师范大学（网考）</div> 
@@ -342,79 +326,74 @@
                             <div class="details-grid-item label">Test Time</div>
                             <div class="details-grid-item value">17-May-2025</div> 
                         </div>
-                </div>
+                    </div>
 
-                <div class="section">
-                    <div class="section-header">HSK四级 (17-May-2025)中文水平考试</div>
-                    <table class="score-table">
-                        <thead>
-                            <tr>
-                                <th>听力</th> <th>阅读</th> <th>写作</th> <th>Total Score</th> <th>Status</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>72</td> <td>77</td> <td>60</td> <td>209</td> <td class="status pass">合格</td> 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="section">
+                        <div class="section-header">HSK四级 (17-May-2025)中文水平考试</div>
+                        <table class="score-table">
+                            <thead>
+                                <tr>
+                                    <th>听力</th> <th>阅读</th> <th>写作</th> <th>Total Score</th> <th>Status</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>72</td> <td>77</td> <td>60</td> <td>209</td> <td class="status pass">合格</td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="section">
-                    <div class="section-header">HSKK (中级) (17-May-2025)中文水平考试</div>
-                    <table class="score-table">
-                        <thead>
-                            <tr>
-                                <th>口试</th> <th>Total Score</th> <th>Status</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>60</td> <td>60</td> <td class="status fail">合格</td> </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="section">
+                        <div class="section-header">HSKK (中级) (17-May-2025)中文水平考试</div>
+                        <table class="score-table">
+                            <thead>
+                                <tr>
+                                    <th>口试</th> <th>Total Score</th> <th>Status</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>60</td> <td>60</td> <td class="status fail">合格</td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="footer">
-                    最终解释权归汉考国际所有
+                    <div class="footer">
+                        最终解释权归汉考国际所有
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'zh',
-                includedLanguages: 'en,fr,de',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true
-            }, 'google_translate_element');
-        }
-        function adjustBodyPaddingForTranslate() {
-            const translateBanner = document.querySelector('.goog-te-banner-frame');
-            if (translateBanner) {
-                const bannerHeight = translateBanner.offsetHeight;
-                if (bannerHeight > 0) {
-                    document.body.style.paddingBottom = bannerHeight + 'px';
-                }
+    <script>
+        // Function to adjust the scale of content to fit screen
+        function adjustContentScale() {
+            const scalableContent = document.querySelector('.scalable-content');
+            const container = document.querySelector('.content-container');
+            
+            // Reset transform first
+            scalableContent.style.transform = 'scale(1)';
+            
+            // Get dimensions
+            const containerHeight = container.clientHeight;
+            const contentHeight = scalableContent.scrollHeight;
+            
+            // Calculate scale if content is too tall
+            if (contentHeight > containerHeight) {
+                const scale = containerHeight / contentHeight * 0.95; // 5% margin
+                scalableContent.style.transform = `scale(${scale})`;
             }
         }
-        const observer = new MutationObserver((mutationsList) => {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    const addedNode = Array.from(mutation.addedNodes).find(node => node.classList && node.classList.contains('goog-te-banner-frame'));
-                    if (addedNode) {
-                        adjustBodyPaddingForTranslate();
-                        observer.disconnect();
-                    }
-                }
-            }
-        });
-        observer.observe(document.body, { childList: true });
-        window.addEventListener('load', adjustBodyPaddingForTranslate);
+        
+        // Adjust on load and resize
+        window.addEventListener('load', adjustContentScale);
+        window.addEventListener('resize', adjustContentScale);
+        
+        // Also adjust after a short delay to ensure everything is rendered
+        setTimeout(adjustContentScale, 100);
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <div id="google_translate_element" style="display: none;"></div>
 </body>
 </html>
