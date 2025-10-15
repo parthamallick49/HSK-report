@@ -76,13 +76,17 @@
             padding: 0px;
         }
 
+
+
+
         .section {
             border: 1px solid var(--border-color);
             border-radius: 3px;
             overflow: hidden;
             margin-bottom: 5px;
         }
-        
+
+
         .main-card {
             border: 0.5px solid var(--border-color);
             border-radius: 4px;
@@ -179,15 +183,19 @@
             border-left: 1px white; 
             border-right: 0px solid var(--border-color); 
             margin-bottom: 0;
+            
         }
+
+
 
         .score-table {
             width: 100%;
             border-collapse: collapse;
             background-color: #fff;
-            border: 1px solid var(--border-color);
+            /* border: 1px solid var(--border-color); */
             margin-top: 0;
         }
+
         
         .score-table th, .score-table td {
             border: 1px solid var(--border-color);
@@ -203,6 +211,18 @@
             padding-top: 3px;
             padding-bottom: 3px;
         }
+
+        /* Remove duplicate borders on edges */
+.score-table td:first-child,
+.score-table th:first-child {
+    border-left: none;   /* ⬅️ Changed */
+}
+
+.score-table td:last-child,
+.score-table th:last-child {
+    border-right: none;  /* ⬅️ Changed */
+}
+
 
         .footer {
             text-align: center;
@@ -288,6 +308,8 @@
             
             .score-table {
                 font-size: 7px; 
+/* remove border from the table itself */
+               /* border: none;  */
             }
             
             .score-table td {
